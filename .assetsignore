@@ -1,0 +1,6 @@
+.git
+.gitignore
+.cfignore
+.assetsignore
+wrangler.jsonc
+대화기록_및_운영가이드.md
