@@ -594,3 +594,84 @@ a:hover {
 .footer-links a:hover {
   color: #fff;
 }
+
+/* Share & Copy Action Bar */
+.share-bar {
+  display: flex;
+  gap: 0.55rem;
+  margin-top: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.btn-share {
+  flex: 1;
+  min-width: 140px;
+  background: #ffffff;
+  border: 1.5px solid #93c5fd;
+  color: var(--primary-dark);
+  padding: 0.58rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  transition: all 0.15s ease;
+}
+
+.btn-share:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+}
+
+/* Keyword Pill Grid (Internal SEO Links) */
+.keyword-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.keyword-pill {
+  background: #f1f5f9;
+  border: 1px solid var(--border);
+  color: #334155;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: all 0.15s ease;
+}
+
+.keyword-pill:hover {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.toast-msg {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0f172a;
+  color: #fff;
+  padding: 0.75rem 1.35rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.toast-msg.show {
+  opacity: 1;
+}
