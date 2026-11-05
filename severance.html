@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>퇴직금 계산기 | 재직일수·평균임금 기반 예상 퇴직금 자동 산출</title>
+  <meta name="description" content="입사일, 퇴사일, 최근 3개월 월급과 연간 상여금·연차수당을 입력하면 1일 평균임금과 법정 예상 퇴직금을 즉시 계산합니다. 근속연수별 퇴직금 조견표 및 퇴직금 지급 기준 안내." />
+  <meta name="keywords" content="퇴직금 계산기, 고용노동부 퇴직금 계산기, 퇴직금 지급기준, 1년 퇴직금, 평균임금 계산, 알바 퇴직금 계산" />
+  <link rel="canonical" href="https://kimmiinfo.co.kr/severance.html" />
+  <meta name="robots" content="index, follow" />
+  <meta name="google-adsense-account" content="ca-pub-5747099739289571" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="김미인포 금융·급여 계산기" />
+  <meta property="og:title" content="퇴직금 자동 계산기 | 1일 평균임금 및 근속연수별 예상 퇴직금" />
+  <meta property="og:description" content="근속연수(재직일수)와 최근 3개월 급여를 입력하면 법정 예상 퇴직금을 정확하게 계산해 드립니다." />
+  <meta property="og:url" content="https://kimmiinfo.co.kr/severance.html" />
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5747099739289571"
+     crossorigin="anonymous"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "법정 퇴직금 자동 계산기",
+        "url": "https://kimmiinfo.co.kr/severance.html",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "description": "재직일수 및 최근 3개월 평균임금을 바탕으로 법정 예상 퇴직금을 산출하는 계산기"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "퇴직금은 퇴사 후 며칠 이내에 지급받아야 하나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "근로자퇴직급여 보장법에 따라 사용자는 근로자가 퇴직한 날로부터 14일 이내에 퇴직금을 지급해야 합니다. 특별한 사정이 있는 경우 당사자 간 합의로 기일을 연장할 수 있습니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "퇴직금은 세전 급여 기준인가요, 세후 실수령액 기준인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "퇴직금 산정의 기초가 되는 평균임금은 4대보험과 소득세를 공제하기 전인 세전 급여 총액을 기준으로 계산합니다."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="./assets/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="./index.html" class="brand">
+        <span class="brand-badge">₩</span>
+        <span>김미인포 금융계산기</span>
+      </a>
+      <nav class="main-nav" aria-label="주요 계산기 메뉴">
+        <a href="./index.html">홈</a>
+        <a href="./salary.html">연봉 실수령액</a>
+        <a href="./weekly-pay.html">주휴수당·시급</a>
+        <a href="./severance.html">퇴직금 계산</a>
+        <a href="./loan.html">대출이자 비교</a>
+        <a href="./freelancer.html">프리랜서 3.3%</a>
+        <a href="./savings.html">예·적금 이자</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-hero">
+      <span class="badge">근로자퇴직급여 보장법 기준</span>
+      <h1>퇴직금 자동 계산기</h1>
+      <p>재직일수(근속기간)와 퇴직 전 3개월간 지급받은 세전 월급, 연간 상여금 및 연차수당을 입력하면 1일 평균임금과 법정 퇴직금을 즉시 산출합니다.</p>
+    </section>
+
+    <section class="calc-grid" aria-label="퇴직금 계산 영역">
+      <div class="card">
+        <div class="card-title">
+          <span>근속기간 및 급여 입력</span>
+          <span style="font-size:0.82rem; color:var(--text-muted); font-weight:600;">세전 기준</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="workDaysInput">
+            <span>총 재직일수 (근속일수)</span>
+            <span class="form-hint" id="workYearsHint">약 3.0년 (1,095일)</span>
+          </label>
+          <div class="input-wrap">
+            <input type="number" id="workDaysInput" class="form-input" value="1095" step="1" min="1" />
+            <span class="input-unit">일</span>
+          </div>
+          <div class="preset-row">
+            <button type="button" class="btn-preset day-preset" data-val="365">1년 (365일)</button>
+            <button type="button" class="btn-preset day-preset" data-val="730">2년 (730일)</button>
+            <button type="button" class="btn-preset day-preset" data-val="1095">3년 (1,095일)</button>
+            <button type="button" class="btn-preset day-preset" data-val="1825">5년 (1,825일)</button>
+            <button type="button" class="btn-preset day-preset" data-val="3650">10년 (3,650일)</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="avgMonthlySalary">
+            <span>퇴직 전 3개월 평균 세전 월급</span>
+            <span class="form-hint" id="sevSalaryHint">350만 원</span>
+          </label>
+          <div class="input-wrap">
+            <input type="number" id="avgMonthlySalary" class="form-input" value="3500000" step="100000" min="0" />
+            <span class="input-unit">원/월</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="annualBonus">
+            <span>최근 1년간 지급받은 상여금 총액 (선택)</span>
+            <span class="form-hint">3/12 반영</span>
+          </label>
+          <div class="input-wrap">
+            <input type="number" id="annualBonus" class="form-input" value="0" step="100000" min="0" />
+            <span class="input-unit">원/년</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="annualLeavePay">
+            <span>연차유급휴가 미사용 수당 총액 (선택)</span>
+            <span class="form-hint">3/12 반영</span>
+          </label>
+          <div class="input-wrap">
+            <input type="number" id="annualLeavePay" class="form-input" value="0" step="50000" min="0" />
+            <span class="input-unit">원/년</span>
+          </div>
+        </div>
+
+        <button type="button" id="calcSevBtn" class="btn-primary">예상 퇴직금 계산하기</button>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <span>예상 퇴직금 산출 내역</span>
+        </div>
+
+        <div class="result-highlight">
+          <div class="label">세전 예상 퇴직금 총액</div>
+          <div class="value" id="severanceTotalOut">10,500,000원</div>
+          <div class="sub" id="severanceSubText">근속 1,095일 (약 3.0년) 기준 법정 퇴직금</div>
+        </div>
+
+        <ul class="breakdown-list">
+          <li class="breakdown-item">
+            <span class="name">최근 3개월 급여 합계 (90일 기준)</span>
+            <span class="amount" id="threeMonthWageOut">10,500,000원</span>
+          </li>
+          <li class="breakdown-item">
+            <span class="name">상여금 및 연차수당 가산액 (×3/12)</span>
+            <span class="amount" id="bonusAddOut">0원</span>
+          </li>
+          <li class="breakdown-item">
+            <span class="name">3개월간 임금 총액</span>
+            <span class="amount" id="threeMonthTotalOut">10,500,000원</span>
+          </li>
+          <li class="breakdown-item">
+            <span class="name">1일 평균임금 (3개월 총액 ÷ 90일)</span>
+            <span class="amount" id="dailyAvgWageOut">116,667원</span>
+          </li>
+          <li class="breakdown-item total">
+            <span class="name">법정 퇴직금 산출액</span>
+            <span class="amount" id="finalSevOut" style="color:var(--primary-dark);">10,500,000원</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <article class="content-section">
+      <h2>근속연수별 예상 퇴직금 조견표 (월급 350만 원 기준)</h2>
+      <p>입력하신 월 평균 세전 급여(<strong id="sevTableSalaryLabel">3,500,000원</strong>) 기준으로 근속연수가 늘어날 때 수령하게 되는 예상 퇴직금 규모입니다.</p>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>근속연수</th>
+              <th>총 재직일수</th>
+              <th>3개월 임금 총액</th>
+              <th>1일 평균임금</th>
+              <th>예상 퇴직금 (세전)</th>
+            </tr>
+          </thead>
+          <tbody id="sevTableBody"></tbody>
+        </table>
+      </div>
+
+      <h3>법정 퇴직금 계산 공식</h3>
+      <div class="formula-box">
+        퇴직금 = 1일 평균임금 × 30일 × (총 재직일수 ÷ 365일)<br />
+        1일 평균임금 = (퇴직 전 3개월간 임금 총액 + 연간 상여금×3/12 + 연차수당×3/12) ÷ 퇴직 전 3개월 총 일수(89~92일)
+      </div>
+      <p>만약 산출된 <strong>1일 평균임금이 근로자의 1일 통상임금보다 적을 경우</strong>에는 근로기준법 제2조 제2항에 따라 <strong>통상임금을 평균임금으로 간주</strong>하여 근로자에게 불리하지 않도록 퇴직금을 계산합니다.</p>
+    </article>
+
+    <section class="content-section">
+      <h2>퇴직금 관련 자주 묻는 질문 (FAQ)</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">Q1. 퇴직금 지급 대상이 되기 위한 두 가지 필수 조건은 무엇인가요?</div>
+          <div class="faq-answer">첫째, 4주 평균하여 <strong>1주간의 소정근로시간이 15시간 이상</strong>이어야 합니다. 둘째, 동일한 사업장에서 <strong>계속근로기간이 1년(365일) 이상</strong>이어야 합니다. 이 두 가지만 충족하면 정규직, 계약직, 아르바이트 구분 없이 모두 퇴직금을 받을 수 있습니다.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Q2. 퇴직금을 IRP(개인형 퇴직연금) 계좌로 받아야 하는 이유가 있나요?</div>
+          <div class="faq-answer">법 개정에 따라 만 55세 미만 퇴직자가 300만 원을 초과하는 퇴직금을 수령할 때는 반드시 본인 명의의 IRP 계좌로 이전받아야 합니다. IRP 계좌로 수령 후 연금으로 수령하면 퇴직소득세를 30~40% 감면받을 수 있으며, 당장 현금이 필요하면 IRP 계좌를 해지하여 일시금으로 인출할 수도 있습니다.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="./index.html">홈</a>
+        <a href="./salary.html">연봉 실수령액 계산기</a>
+        <a href="./weekly-pay.html">주휴수당 계산기</a>
+        <a href="./severance.html">퇴직금 계산기</a>
+        <a href="./loan.html">대출이자 계산기</a>
+        <a href="./freelancer.html">프리랜서 3.3% 계산기</a>
+        <a href="./savings.html">예·적금 이자 계산기</a>
+        <a href="./privacy.html">개인정보처리방침 및 이용약관</a>
+      </div>
+      <p>© 2026 김미인포(kimmiinfo.co.kr). All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="./assets/common.js"></script>
+  <script>
+    function updateSeveranceCalculator() {
+      const days = Number(document.getElementById('workDaysInput').value) || 0;
+      const monthly = Number(document.getElementById('avgMonthlySalary').value) || 0;
+      const bonus = Number(document.getElementById('annualBonus').value) || 0;
+      const leave = Number(document.getElementById('annualLeavePay').value) || 0;
+
+      const years = (days / 365).toFixed(1);
+      document.getElementById('workYearsHint').textContent = `약 ${years}년 (${days.toLocaleString('ko-KR')}일)`;
+      document.getElementById('sevSalaryHint').textContent = toKoreanCurrencyText(monthly);
+      document.getElementById('sevTableSalaryLabel').textContent = formatWon(monthly);
+
+      const threeMonthWage = monthly * 3;
+      const bonusAdd = (bonus + leave) * (3 / 12);
+      const threeMonthTotal = threeMonthWage + bonusAdd;
+      const dailyAvg = threeMonthTotal / 90;
+      const severance = dailyAvg * 30 * (days / 365);
+
+      document.getElementById('severanceTotalOut').textContent = formatWon(severance);
+      document.getElementById('severanceSubText').textContent = days >= 365
+        ? `근속 ${days.toLocaleString('ko-KR')}일 (약 ${years}년) 기준 법정 퇴직금`
+        : '주의: 재직일수 365일 미만은 법정 퇴직금 지급 대상이 아닙니다';
+      document.getElementById('threeMonthWageOut').textContent = formatWon(threeMonthWage);
+      document.getElementById('bonusAddOut').textContent = formatWon(bonusAdd);
+      document.getElementById('threeMonthTotalOut').textContent = formatWon(threeMonthTotal);
+      document.getElementById('dailyAvgWageOut').textContent = formatWon(dailyAvg);
+      document.getElementById('finalSevOut').textContent = formatWon(severance);
+
+      const tbody = document.getElementById('sevTableBody');
+      const yearList = [1, 2, 3, 5, 7, 10, 15, 20];
+      tbody.innerHTML = yearList.map((yr) => {
+        const d = yr * 365;
+        const sevAmt = dailyAvg * 30 * yr;
+        return `<tr>
+          <td>${yr}년 근속</td>
+          <td>${d.toLocaleString('ko-KR')}일</td>
+          <td>${formatWon(threeMonthTotal)}</td>
+          <td>${formatWon(dailyAvg)}</td>
+          <td class="highlight-col">${formatWon(sevAmt)}</td>
+        </tr>`;
+      }).join('');
+    }
+
+    document.querySelectorAll('.day-preset').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.getElementById('workDaysInput').value = btn.getAttribute('data-val');
+        updateSeveranceCalculator();
+      });
+    });
+
+    ['workDaysInput', 'avgMonthlySalary', 'annualBonus', 'annualLeavePay'].forEach((id) => {
+      document.getElementById(id).addEventListener('input', updateSeveranceCalculator);
+      document.getElementById(id).addEventListener('change', updateSeveranceCalculator);
+    });
+    document.getElementById('calcSevBtn').addEventListener('click', updateSeveranceCalculator);
+
+    updateSeveranceCalculator();
+  </script>
+</body>
+</html>

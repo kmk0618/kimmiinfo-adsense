@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>주휴수당 계산기 & 알바 시급·월급 계산기 | 주 15시간 지급 조건 및 조견표</title>
+  <meta name="description" content="시급과 1주 근무시간을 입력하면 법정 주휴수당과 주급, 월 환산 급여, 3.3% 또는 4대보험 공제 후 실수령액을 즉시 계산합니다. 주 근무시간별 주휴수당 조견표와 지급 조건 총정리." />
+  <meta name="keywords" content="주휴수당 계산기, 알바 급여 계산기, 시급 월급 변환기, 주휴수당 지급조건, 주 15시간 주휴수당, 알바 3.3% 계산기" />
+  <link rel="canonical" href="https://kimmiinfo.co.kr/weekly-pay.html" />
+  <meta name="robots" content="index, follow" />
+  <meta name="google-adsense-account" content="ca-pub-5747099739289571" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="김미인포 금융·급여 계산기" />
+  <meta property="og:title" content="알바 주휴수당·시급·월급 자동 계산기" />
+  <meta property="og:description" content="시급과 주간 근무시간만 입력하면 주휴수당 포함 주급·월급과 세후 실수령액을 1초 만에 계산합니다." />
+  <meta property="og:url" content="https://kimmiinfo.co.kr/weekly-pay.html" />
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5747099739289571"
+     crossorigin="anonymous"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "주휴수당 및 알바 시급·월급 계산기",
+        "url": "https://kimmiinfo.co.kr/weekly-pay.html",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "description": "근로기준법 제55조에 따른 주휴수당 및 주급·월급 환산 자동 계산기"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "주휴수당을 받기 위한 필수 조건은 무엇인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "1주 소정근로시간이 15시간 이상이고, 근로계약서상 약속한 1주일간의 소정근로일을 개근(결근 없이 출근)하면 주휴수당이 발생합니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "지각이나 조퇴를 해도 주휴수당을 받을 수 있나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "네, 개근 여부는 출근 일수를 기준으로 판단하므로 지각이나 조퇴를 했더라도 결근하지 않고 출근했다면 주휴수당은 정상적으로 지급되어야 합니다."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="./assets/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="./index.html" class="brand">
+        <span class="brand-badge">₩</span>
+        <span>김미인포 금융계산기</span>
+      </a>
+      <nav class="main-nav" aria-label="주요 계산기 메뉴">
+        <a href="./index.html">홈</a>
+        <a href="./salary.html">연봉 실수령액</a>
+        <a href="./weekly-pay.html">주휴수당·시급</a>
+        <a href="./severance.html">퇴직금 계산</a>
+        <a href="./loan.html">대출이자 비교</a>
+        <a href="./freelancer.html">프리랜서 3.3%</a>
+        <a href="./savings.html">예·적금 이자</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-hero">
+      <span class="badge">근로기준법 제55조 주휴일 유급휴일 기준</span>
+      <h1>알바 주휴수당·시급·월급 계산기</h1>
+      <p>시급과 주간 소정근로시간을 입력하면 법정 주휴수당과 주급, 월 환산 급여(4.345주 기준), 세금 공제 후 예상 실수령액을 즉시 계산해 드립니다.</p>
+    </section>
+
+    <section class="calc-grid" aria-label="주휴수당 계산 영역">
+      <div class="card">
+        <div class="card-title">
+          <span>근무 조건 입력</span>
+          <span style="font-size:0.82rem; color:var(--text-muted); font-weight:600;">자동 계산</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="hourlyWage">
+            <span>적용 시급</span>
+            <span class="form-hint" id="wageHint">10,320원</span>
+          </label>
+          <div class="input-wrap">
+            <input type="number" id="hourlyWage" class="form-input" value="10320" step="10" min="0" />
+            <span class="input-unit">원</span>
+          </div>
+          <div class="preset-row">
+            <button type="button" class="btn-preset wage-preset" data-val="10030">10,030원</button>
+            <button type="button" class="btn-preset wage-preset" data-val="10320">10,320원</button>
+            <button type="button" class="btn-preset wage-preset" data-val="11000">11,000원</button>
+            <button type="button" class="btn-preset wage-preset" data-val="12000">12,000원</button>
+            <button type="button" class="btn-preset wage-preset" data-val="15000">15,000원</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="weeklyHours">
+            <span>1주 총 근무시간 (소정근로시간)</span>
+            <span class="form-hint">주 15시간 이상 시 주휴수당 발생</span>
+          </label>
+          <div class="input-wrap">
+            <input type="number" id="weeklyHours" class="form-input" value="25" step="1" min="1" max="80" />
+            <span class="input-unit">시간/주</span>
+          </div>
+          <div class="preset-row">
+            <button type="button" class="btn-preset hour-preset" data-val="14">주 14시간 (미발생)</button>
+            <button type="button" class="btn-preset hour-preset" data-val="15">주 15시간</button>
+            <button type="button" class="btn-preset hour-preset" data-val="20">주 20시간</button>
+            <button type="button" class="btn-preset hour-preset" data-val="30">주 30시간</button>
+            <button type="button" class="btn-preset hour-preset" data-val="40">주 40시간 (풀타임)</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="taxDeductOption">세금/보험 공제 방식</label>
+          <select id="taxDeductOption" class="form-select">
+            <option value="none" selected>공제 없음 (세전 총액)</option>
+            <option value="freelance">사업소득 3.3% 공제</option>
+            <option value="insurance">4대보험 약 9.4% 공제</option>
+          </select>
+        </div>
+
+        <button type="button" id="calcWeeklyBtn" class="btn-primary">주휴수당 및 급여 계산하기</button>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <span>주휴수당 및 월 환산 급여 결과</span>
+        </div>
+
+        <div class="result-highlight">
+          <div class="label">1주 예상 주휴수당</div>
+          <div class="value" id="holidayPayOut">51,600원</div>
+          <div class="sub" id="holidayStatusSub">유급 주휴시간: 5.0시간 인정 (주 15시간 이상 요건 충족)</div>
+        </div>
+
+        <ul class="breakdown-list">
+          <li class="breakdown-item">
+            <span class="name">1주 기본 근무 급여</span>
+            <span class="amount" id="weeklyBaseOut">258,000원</span>
+          </li>
+          <li class="breakdown-item">
+            <span class="name">1주 주휴수당</span>
+            <span class="amount" id="weeklyHolidayOut">51,600원</span>
+          </li>
+          <li class="breakdown-item">
+            <span class="name">주휴수당 포함 주급 총액</span>
+            <span class="amount" id="weeklyTotalOut">309,600원</span>
+          </li>
+          <li class="breakdown-item">
+            <span class="name">월 환산 세전 급여 (×4.345주)</span>
+            <span class="amount" id="monthlyGrossEquivOut">1,345,212원</span>
+          </li>
+          <li class="breakdown-item">
+            <span class="name">월 예상 공제액</span>
+            <span class="amount" id="monthlyDeductEquivOut">0원</span>
+          </li>
+          <li class="breakdown-item total">
+            <span class="name">월 예상 실수령액 (주휴수당 포함)</span>
+            <span class="amount" id="monthlyNetEquivOut" style="color:var(--primary-dark);">1,345,212원</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <article class="content-section">
+      <h2>주간 근무시간별 주휴수당 및 월급 환산 조견표</h2>
+      <p>시급 <strong id="tableWageLabel">10,320원</strong> 기준으로 주간 소정근로시간에 따라 발생하는 주휴시간, 1주 주휴수당, 주급 총액, 그리고 한 달(4.345주) 환산 세전 월급을 정리한 표입니다.</p>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>주간 근무시간</th>
+              <th>인정 주휴시간</th>
+              <th>1주 기본급</th>
+              <th>1주 주휴수당</th>
+              <th>주급 합계</th>
+              <th>월 환산 급여(4.345주)</th>
+            </tr>
+          </thead>
+          <tbody id="weeklyTableBody"></tbody>
+        </table>
+      </div>
+
+      <h3>법정 주휴수당 계산 공식</h3>
+      <div class="formula-box">
+        • 주 15시간 이상 ~ 40시간 미만: (1주 소정근로시간 ÷ 40시간) × 8시간 × 시급<br />
+        • 주 40시간 이상 근무 시: 8시간 × 시급 (최대 8시간 한도)
+      </div>
+      <p>예를 들어 시급 10,320원으로 주 20시간(하루 4시간씩 주 5일) 근무한다면, 인정되는 유급 주휴시간은 <code>(20 ÷ 40) × 8 = 4시간</code>이 됩니다. 따라서 매주 기본 급여(20시간분) 외에 4시간분인 41,280원을 주휴수당으로 추가 지급받아야 합니다.</p>
+
+      <h3>왜 한 달 월급 계산할 때 4주가 아니라 4.345주를 곱하나요?</h3>
+      <p>1년은 365일이고 이를 12개월로 나누면 한 달은 평균 약 30.416일입니다. 이를 다시 1주일(7일)로 나누면 <code>365 ÷ 12 ÷ 7 = 4.345238...</code>주가 됩니다. 그래서 주 40시간 근무자의 유급 주휴시간(주 8시간)을 합한 주 48시간에 4.345주를 곱하면 정확히 법정 월 소정근로시간인 <strong>209시간</strong>이 도출됩니다.</p>
+    </article>
+
+    <section class="content-section">
+      <h2>주휴수당 관련 자주 묻는 질문 (FAQ)</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">Q1. 대타나 연장근무로 이번 주만 15시간을 넘겼는데 주휴수당이 나오나요?</div>
+          <div class="faq-answer">주휴수당은 실제 연장근무 시간이 아니라 근로계약서상 사전 합의된 <strong>소정근로시간</strong>을 기준으로 산정합니다. 따라서 계약된 소정근로시간이 주 15시간 미만이라면 일시적인 연장근무로 15시간을 넘겼더라도 주휴수당 지급 의무는 발생하지 않습니다.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Q2. 5인 미만 영세 사업장(편의점, 개인 카페 등)도 주휴수당을 받을 수 있나요?</div>
+          <div class="faq-answer">네! 주휴수당(근로기준법 제55조)은 상시 근로자 수와 무관하게 <strong>5인 미만 사업장에도 100% 동일하게 적용</strong>됩니다. 편의점, 식당, 개인 카페 아르바이트도 주 15시간 이상 개근 시 반드시 주휴수당을 지급받아야 합니다.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Q3. 마지막 퇴사하는 주에도 주휴수당이 발생하나요?</div>
+          <div class="faq-answer">고용노동부 변경 행정해석에 따라, 1주일 동안 소정근로일을 개근한 뒤 그 주가 끝나는 날(또는 주휴일 전날) 퇴사하더라도 이미 성립한 유급 주휴수당 청구권은 인정받을 수 있습니다.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="./index.html">홈</a>
+        <a href="./salary.html">연봉 실수령액 계산기</a>
+        <a href="./weekly-pay.html">주휴수당 계산기</a>
+        <a href="./severance.html">퇴직금 계산기</a>
+        <a href="./loan.html">대출이자 계산기</a>
+        <a href="./freelancer.html">프리랜서 3.3% 계산기</a>
+        <a href="./savings.html">예·적금 이자 계산기</a>
+        <a href="./privacy.html">개인정보처리방침 및 이용약관</a>
+      </div>
+      <p>© 2026 김미인포(kimmiinfo.co.kr). All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="./assets/common.js"></script>
+  <script>
+    function calcWeeklyData(wage, hours, taxMode) {
+      const holidayHours = hours >= 15 ? Math.min(8, (hours / 40) * 8) : 0;
+      const weeklyBase = wage * hours;
+      const weeklyHoliday = wage * holidayHours;
+      const weeklyTotal = weeklyBase + weeklyHoliday;
+      const monthlyGross = weeklyTotal * 4.345;
+
+      let deductRate = 0;
+      if (taxMode === 'freelance') deductRate = 0.033;
+      else if (taxMode === 'insurance') deductRate = 0.094;
+
+      const monthlyDeduct = Math.floor((monthlyGross * deductRate) / 10) * 10;
+      const monthlyNet = Math.round(monthlyGross - monthlyDeduct);
+
+      return {
+        holidayHours,
+        weeklyBase,
+        weeklyHoliday,
+        weeklyTotal,
+        monthlyGross,
+        monthlyDeduct,
+        monthlyNet
+      };
+    }
+
+    function updateWeeklyCalculator() {
+      const wage = Number(document.getElementById('hourlyWage').value) || 0;
+      const hours = Number(document.getElementById('weeklyHours').value) || 0;
+      const taxMode = document.getElementById('taxDeductOption').value;
+
+      document.getElementById('wageHint').textContent = formatWon(wage);
+      document.getElementById('tableWageLabel').textContent = formatWon(wage);
+
+      const r = calcWeeklyData(wage, hours, taxMode);
+      document.getElementById('holidayPayOut').textContent = formatWon(r.weeklyHoliday);
+      document.getElementById('holidayStatusSub').textContent = hours >= 15
+        ? `유급 주휴시간: ${r.holidayHours.toFixed(1)}시간 인정 (주 15시간 이상 충족)`
+        : '주 15시간 미만 근무로 주휴수당 미발생 구간입니다';
+
+      document.getElementById('weeklyBaseOut').textContent = formatWon(r.weeklyBase);
+      document.getElementById('weeklyHolidayOut').textContent = formatWon(r.weeklyHoliday);
+      document.getElementById('weeklyTotalOut').textContent = formatWon(r.weeklyTotal);
+      document.getElementById('monthlyGrossEquivOut').textContent = formatWon(r.monthlyGross);
+      document.getElementById('monthlyDeductEquivOut').textContent = formatWon(r.monthlyDeduct);
+      document.getElementById('monthlyNetEquivOut').textContent = formatWon(r.monthlyNet);
+
+      const tbody = document.getElementById('weeklyTableBody');
+      const hourRows = [12, 15, 18, 20, 24, 25, 30, 35, 40];
+      tbody.innerHTML = hourRows.map((h) => {
+        const row = calcWeeklyData(wage, h, 'none');
+        return `<tr>
+          <td>주 ${h}시간</td>
+          <td>${row.holidayHours.toFixed(1)}시간</td>
+          <td>${formatWon(row.weeklyBase)}</td>
+          <td>${formatWon(row.weeklyHoliday)}</td>
+          <td>${formatWon(row.weeklyTotal)}</td>
+          <td class="highlight-col">${formatWon(row.monthlyGross)}</td>
+        </tr>`;
+      }).join('');
+    }
+
+    document.querySelectorAll('.wage-preset').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.getElementById('hourlyWage').value = btn.getAttribute('data-val');
+        updateWeeklyCalculator();
+      });
+    });
+
+    document.querySelectorAll('.hour-preset').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.getElementById('weeklyHours').value = btn.getAttribute('data-val');
+        updateWeeklyCalculator();
+      });
+    });
+
+    ['hourlyWage', 'weeklyHours', 'taxDeductOption'].forEach((id) => {
+      document.getElementById(id).addEventListener('input', updateWeeklyCalculator);
+      document.getElementById(id).addEventListener('change', updateWeeklyCalculator);
+    });
+    document.getElementById('calcWeeklyBtn').addEventListener('click', updateWeeklyCalculator);
+
+    updateWeeklyCalculator();
+  </script>
+</body>
+</html>
